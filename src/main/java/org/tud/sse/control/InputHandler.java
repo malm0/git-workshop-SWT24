@@ -52,7 +52,7 @@ public class InputHandler {
                     return;
                 }
                 try {
-                    int studentId = Integer.parseInt(args[2]);
+                    int studentId = Integer.parseInt(args[3]);
                     Student s = storage.getStudent(studentId);
                     if(s != null){
                         System.out.println("All groups for " + s.toString() + ":");
@@ -87,11 +87,11 @@ public class InputHandler {
                 }
 
                 if(storage.hasGroup(args[2])){
-                    System.err.println("Group name '" + args[2] + "' already taken");
+                    System.err.println("Group name '" + args[3] + "' already taken");
                     return;
                 }
 
-                Group newGroup = new Group(args[2], args[3]);
+                Group newGroup = new Group(args[2], args[2]);
 
                 storage.storeGroup(newGroup);
 
@@ -107,7 +107,7 @@ public class InputHandler {
                 int idCnt = 0;
                 while(storage.getStudent(idCnt) != null) { idCnt ++; }
 
-                Student newStudent = new Student(idCnt, args[2]);
+                Student newStudent = new Student(idCnt, args[3]);
 
                 storage.storeStudent(newStudent);
 
@@ -119,14 +119,14 @@ public class InputHandler {
                     return;
                 }
                 try {
-                    int studentId = Integer.parseInt(args[2]);
-                    String groupName = args[3];
+                    int studentId = Integer.parseInt(args[3]);
+                    String groupName = args[2];
 
                     //TODO: Implement this
                     System.err.println("Not implemented!");
 
                 } catch(NumberFormatException nfx){
-                    System.err.println("Provided argument 'student-id' is not a number: " + args[2]);
+                    System.err.println("Provided argument 'student-id' is not a number: " + args[3]);
                 }
             } else {
                 System.err.println("Invalid argument for 'add': '"+object+"' is not a valid object");
